@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	int a,b;
+	scanf("%d%d",&a,&b);
+	printf("phep cong a+b: %d\n",a+b);
+	printf("phep tru a-b: %d\n",a-b);
+	printf("phep nhan a*b: %d\n",a*b);
+	printf("phep chia a/b: %.3f\n",1.0*a/b);
+	if(a/b*b==a) printf("suy ra phep chia het");
+	else printf("suy ra phep chia du");
+}
