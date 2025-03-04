@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	printf("nhap lan luot he so a,b,c,d,e,f cua he pt: a*x+b*y=c,d*x+e*y=f :  ");
+	float a,b,c,d,e,f;
+	scanf("%f%f%f%f%f%f",&a,&b,&c,&d,&e,&f);
+	float det=a*e-d*b;
+	if(det==0){
+		if(a*f-d*c==0&&-b*f+e*c==0) printf("pt vo so nghiem");
+		else printf("pt vo nghiem");
+	}
+	else{
+		float x=c*e-f*b;
+		float y=a*f-c*d;
+		printf("x: %.2f\n",x/det);
+		printf("y: %.2f\n",y/det);
+	}
+	return 0;
+}
