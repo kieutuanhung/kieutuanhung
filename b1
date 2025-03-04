@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	int x;
+	printf("moi nhap so x: ");
+	scanf("%d",&x);
+	int a=pow(x,3);
+	int b=pow(x,4);
+	printf("x mu 2 = %d\n",x*x);
+	printf("x mu 3 = %d\n",a);
+	printf("x mu 4 = %d\n",b);
+}
