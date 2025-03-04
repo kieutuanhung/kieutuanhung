@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	printf("nhap nam: ");
+	int nam;
+	while(1){
+		scanf("%d",&nam);
+		if(nam>0) break;
+		printf("nhap lai nam: ");
+	}
+	if((nam%4==0&&nam%100!=0)||(nam%100==0&&nam%400==0)){
+		printf("nhap thang: ");
+		int thang;
+		while(1){
+			scanf("%d",&thang);
+			if(thang>0&&thang<=12) break;
+			printf("nhap lai thang: ");
+		}
+		if(thang==1||thang==3||thang==5||thang==7||thang==8||thang==10||thang==12) printf("Thang %d Nam %d co 31 ngay",thang,nam);
+		else if(thang==2) printf("Thang 2 Nam %d co 29 ngay",nam);
+		else printf("Thang %d Nam %d co 30 ngay",thang,nam); 
+	}
+	else{
+		printf("nhap thang: ");
+		int thang;
+		while(1){
+			scanf("%d",&thang);
+			if(thang>0&&thang<=12) break;
+			printf("nhap lai thang: ");
+		}
+		if(thang==1||thang==3||thang==5||thang==7||thang==8||thang==10||thang==12) printf("Thang %d Nam %d co 31 ngay",thang,nam);
+		else if(thang==2) printf("Thang 2 Nam %d co 28 ngay",nam);
+		else printf("Thang %d Nam %d co 30 ngay",thang,nam); 		
+	}
+}
