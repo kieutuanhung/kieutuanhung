@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	float a,b,c;
+	printf("nhap vao lan luot he so cua a*x*x+b*x+c=0 :");
+	scanf("%f%f%f",&a,&b,&c);
+	if(a==0){
+		if(b==0){
+			if(c==0) printf("he vo so nghiem");
+			else printf("he vo nghiem");
+		}
+		else{
+			printf("he co mot nghiem: %.2f",-c/b);
+		}
+	}
+	else{
+		float delta=b*b-4*a*c;
+		if(delta<0) printf("he vo nghiem");
+		else if(delta==0) printf("he co nghiem duy nhat: %.2f",-b/(2*a));
+		else {
+			float cd=sqrt(delta);
+			float x1=(-b-cd)/(2*a);
+			float x2=(-b+cd)/(2*a);
+			printf("he co 2 nghiem:\n");
+			printf("x1: %.2f\n x2: %.2f\n",x1,x2);
+		}
+	}
+	return 0;
+}
