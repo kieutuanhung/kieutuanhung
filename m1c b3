@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int main(){
+	int n;
+	scanf("%d",&n);
+	int a[n];
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	int tong=0,tongl=0,tongb=0,deml=0,demb=0;
+	for(int i=0;i<n;i++){
+		tong+=a[i];
+		if(a[i]<0){
+			tongb+=a[i];
+			demb++;
+		}
+		else{
+			tongl+=a[i];
+			deml++;
+		}
+	}
+	printf("tong all: %d\n",tong);
+	printf("tong so nguyen duong: %d\n",tongl);
+	printf("tong so nguyen am: %d\n",tongb);
+	printf("TB cong all: %f\n",1.0*tong/n);
+	printf("TB cong nguyen duong: %f\n",1.0*tongl/deml);
+	printf("TB cong nguyen am: %f\n",1.0*tongb/demb);
+}
