@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+#include<stdlib.h>
+//rivershen
+int d[10000001];
+int main(){
+	printf("nhap so pt mang a: ");
+	int n;
+	scanf("%d",&n);
+	int a[n];
+	printf("nhap cac pt mang a: ");
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	printf("nhap so pt mang b: ");
+	int m;
+	scanf("%d",&m);
+	int b[m];
+	printf("nhap cac pt mang b: ");
+	for(int i=0;i<m;i++){
+		scanf("%d",&b[i]);
+	}
+	int i=0,j=0;
+	int dem=0;
+	while(i<n&&j<m){
+		if(a[i]<b[j]){
+			d[dem++]=a[i++];
+		}
+		else{
+			d[dem++]=b[j++];
+		}
+	}
+	while(i<n){
+		d[dem++]=a[i++];
+	}
+	while(j<n){
+		d[dem++]=b[j++];
+	}
+	for(int i=0;i<dem;i++){
+		printf("%d ",d[i]);
+	}
+}
