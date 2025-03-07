@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int main(){
+	float t;
+	printf("nhap tong thu nhap nam 2014: ");
+	scanf("%f",&t);
+	float s=t;
+	float m;
+	printf("nhap toc do tang truong binh qua: ");
+	scanf("%f",&m);
+	printf("nam\t gdp\n");
+	printf("2014\t %f\n",t);
+	int dem=1;
+	while(1){
+		t=t*m;
+		if(t>2*s) break;
+		printf("%d\t %f\n",2014+dem,t);
+		dem++;
+	}
+}
