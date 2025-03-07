@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int main(){
+	printf("nhap so pt mang: ");
+	int n;
+	scanf("%d",&n);
+	int a[n];
+	printf("nhap cac pt mang: ");
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	for(int i=0;i<n;i++){
+		if(a[i]<0) a[i]=0;
+	}
+	for(int i=0;i<n;i++){
+		printf("%d ",a[i]);
+	}
+}
