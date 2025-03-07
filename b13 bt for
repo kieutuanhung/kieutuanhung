@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+//rivershen
+#define ll long long
+ll gt(int n){
+	if(n==0) return 1;
+	ll tich=1;
+	for(int i=1;i<=n;i++){
+		tich*=i;
+	}
+	return tich;
+}
+int main(){
+	printf("nhap x di : ");
+	double x;
+	scanf("%lf",&x);
+	printf("nhap do chinh xac eps: ");
+    double eps;
+    scanf("%lf",&eps);
+    double tong=0;
+    int dem=0;
+    while(pow(x,dem)/gt(dem)>eps){
+    	double o=pow(x,dem)/gt(dem);
+    	tong+=o;
+    	dem++;
+	}
+	printf("e mu x=y= %lf",tong);
+} 
