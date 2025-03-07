@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int main(){
+	int n;
+	scanf("%d",&n);
+	int a[n];
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	int max=-1e9,min=1e9,vtmax,vtmin;
+	for(int i=0;i<n;i++){
+		if(a[i]<min){
+			min=a[i];
+			vtmin=i;
+		}
+		else{
+			max=a[i];
+			vtmax=i;
+		}
+	}
+	printf("pt lon nhat: %d ",max);
+	printf("vi tri pt lon nhat: %d",vtmax);
+	printf("\n");
+	printf("pt nho nhat: %d ",min);
+	printf("vi tri pt be nhat %d",vtmin);
+}
