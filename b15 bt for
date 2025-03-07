@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int main(){
+	double t;
+	printf("nhap so tien gui: ");
+	scanf("%lf",&t);
+	int n;
+	printf("nhap so thang gui: ");
+	scanf("%d",&n);
+	while(n>0){
+		t+=(t*0.45/100);
+		n--;
+	}
+	printf("so tien nhan: %lf",t);
+}
