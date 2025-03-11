@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<math.h>
+#define ll long long
+//rivershen
+int gt(int n){
+	if(n==1) return 0;
+	else if(n==2) return 1;
+	else return gt(n-1)+gt(n-2);
+}
+int main(){
+	int x;
+	scanf("%d",&x);
+	printf("%d",gt(x));
+}
