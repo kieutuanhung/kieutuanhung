@@ -5,7 +5,7 @@
 int com(const void *a,const void *b){
 	int *x=(int *)a;
 	int *y=(int *)b;
-	if(abs(*x)<abs(*y)) return -1;
+	if(*x<*y) return -1;
 	else return 1;
 }
 int main(){
