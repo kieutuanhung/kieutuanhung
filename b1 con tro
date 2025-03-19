@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+//rivershen
+int main(){
+	int a,b;
+	scanf("%d%d",&a,&b);
+	int *x=&a;
+	int *y=&b;
+	int tam=*x;
+	*x=*y;
+	*y=tam;
+	printf("%d\n%d",a,b);
+}
