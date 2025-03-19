@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+//rivershen
+int b2[10000001];
+int b8[10000001];
+int b16[10000001];
+void doi2(int a,int b2[]){
+	int dem=0;
+	while(a>0){
+		b2[dem]=a%2;
+		dem++;
+		a/=2;
+	}
+	for(int i=dem-1;i>=0;i--){
+		printf("%d",b2[i]);
+	}
+}
+void doi8(int a,int b8[]){
+	int dem=0;
+	while(a>0){
+		b8[dem]=a%8;
+		dem++;
+		a/=8;
+	}
+	for(int i=dem-1;i>=0;i--){
+		printf("%d",b8[i]);
+	}
+}
+void doi16(int a,int b16[]){
+	int dem=0;
+	while(a>0){
+		b16[dem]=a%16;
+		dem++;
+		a/=16;
+	}
+	for(int i=dem-1;i>=0;i--){
+		if(b16[i]>=10){
+			printf("%c",b16[i]+55);
+		}
+		else{
+			printf("%d",b16[i]);
+		}
+	}
+}
+int main(){
+	int a;
+	scanf("%d",&a);
+	doi2(a,b2);
+	doi8(a,b8);
+	doi16(a,b16);
+}
