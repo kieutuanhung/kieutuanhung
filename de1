@@ -1,0 +1,164 @@
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+#include<string.h>
+#include<stdlib.h>
+#include <stdio.h>
+//int main(){
+//	int n;
+//	printf("nhap so luong phan tu trong day: ");
+//	scanf("%d",&n);
+//	int a[n];
+//	int x;
+//	printf("nhao so X: ");
+//	scanf("%d",&x);
+//	for(int i=0;i<n;i++){
+//		scanf("%d",&a[i]);
+//	}
+//	int dem=0;
+//	for(int i=0;i<n;i++){
+//		if(a[i]==x){
+//			dem++;
+//		}
+//	}
+//	if(dem>0){
+//		printf("YES\n");
+//		printf("X xuat hien %d lan",dem);
+//	}
+//	else{
+//		printf("NO");
+//	}
+//}
+struct node {
+	char id[100];
+	char ten[100];
+	char chucvu[100];
+	char sdt[100];
+	struct node *next;
+};
+typedef struct node node;
+node *makenode(){
+	node *newnode=(node *)malloc(sizeof(node));
+	printf("nhap id:");
+	gets(newnode->id);
+	printf("nhap ten:");
+	gets(newnode->ten);
+	printf("nhap chuc vu:");
+	gets(newnode->chucvu);
+	printf("nhap sdt:");
+	gets(newnode->sdt);
+	newnode->next=NULL;
+	return newnode;
+}
+void themsau(node **head){
+	if(*head==NULL){
+		node *newnode=makenode();
+		(*head)=newnode;
+		return;
+	}
+	node *tam=(*head);
+	while(tam->next!=NULL){
+		tam=tam->next;
+	}
+	node *newnode=makenode();
+	tam->next=newnode;
+}
+int size(node *head){
+	int dem=0;
+	while(head!=NULL){
+		dem++;
+		head=head->next;
+	}
+	return dem;
+}
+void xoa(node **head,char c[]){
+	int n=size(*head);
+	if(n==0) return;
+	else if(n==1&&strcmp((*head)->id,c)==0){
+		node *tam=(*head);
+		free(tam);
+		return;
+	}
+	int vt;
+	node *tam=(*head);
+	for(int i=1;i<=n;i++){
+		if(strcmp(tam->id,c)==0){
+			vt=i;
+			break;
+		}
+		tam=tam->next;
+	}
+	if(vt==1){
+		node *tam=*head;
+		(*head)=(*head)->next;
+		free(tam);
+		return;
+		}
+	node *trong=(*head);
+	node *truoc=trong;
+	for(int i=1;i<vt;i++){
+		trong=trong->next;
+	}
+	for(int i=1;i<vt-1;i++){
+		truoc=truoc->next;
+	}
+	truoc->next=trong->next;
+	free(trong);
+}
+void in(node *head){
+	int n=size(head);
+	printf("            DANH SACH NHAN VIEN\n");
+	printf("ID       Ho ten          Chuc vu       So DT\n");
+	if(head==NULL) return;
+	node *tam=head;
+	while(n--){
+		printf("%s",tam->id);
+		for(int i=9;i>strlen(tam->id);i--){
+			printf(" ");
+		}
+		printf("%s",tam->ten);
+		for(int i=16;i>strlen(tam->ten);i--){
+			printf(" ");
+		}
+		printf("%s",tam->chucvu);
+		for(int i=14;i>strlen(tam->chucvu);i--){
+			printf(" ");
+		}
+		printf("%s\n",tam->sdt);
+		tam=tam->next;
+	}
+}
+int main(){
+	node *head=NULL;
+	while(1){
+		printf("1.tao danh sach nhan vien\n");
+		printf("2.hien thi danh sach nhan vien\n");
+		printf("3.xoa nhan vien\n");
+		printf("4.ket thuc\n");
+		int lc;
+		printf("nhap lua chon:");
+		scanf("%d",&lc);
+		if(lc==1){
+			int n;
+			printf("nhap so luong nhan vien:");
+			scanf("%d",&n);
+			getchar();
+			for(int i=1;i<=n;i++){
+				printf("nhan vien thu %d\n",i);
+				themsau(&head);
+			}
+		}
+		if(lc==2){
+			in(head);
+		}
+		if(lc==3){
+			getchar();
+			char c[100];
+			printf("nhap id muon xoa:");
+			gets(c);
+			xoa(&head,c);
+		}
+		if(lc==4) break;
+	}
+	return 0;
+}
