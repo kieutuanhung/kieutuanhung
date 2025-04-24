@@ -1,0 +1,110 @@
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+#include<string.h>
+#include<stdlib.h>
+struct sinhvien{
+	char ten[1000];
+	char lop[1000];
+	double gpa;
+};
+typedef struct sinhvien sinhvien;
+void nhap(sinhvien *x){
+	getchar();
+	printf("nhap ten: ");
+	gets(x->ten);
+	printf("nhap lop: ");
+	gets(x->lop);
+	printf("nhap gpa: ");
+	scanf("%lf",&x->gpa);
+}
+void in(sinhvien x){
+	printf("%s %s %.2lf\n",x.ten,x.lop,x.gpa);
+}
+void timkiem(sinhvien a[],int n,char name[]){
+	int dem=0;
+	for(int i=0;i<n;i++){
+		if(strcmp(a[i].ten,name)==0){
+			in(a[i]);
+			dem++;
+		}
+	}
+	if(dem!=0) printf("deo co");
+}
+void xoa(sinhvien a[],int *n,char name[]){
+	for(int i=0;i<*n;i++){
+		if(strcmp(a[i].ten,name)==0){
+			for(int j=i;j<*n-1;j++){
+				a[j]=a[j+1];
+			}
+			(*n)--;
+		}
+	}
+}
+int com(const void *a,const void *b){
+	sinhvien *x=(sinhvien *)a;
+	sinhvien *y=(sinhvien *)b;
+	if(x->gpa<y->gpa) return -1;
+	else return 1;
+}
+void max(sinhvien a[],int n){
+	double max=0;
+	for(int i=0;i<n;i++){
+		max=fmax(max,a[i].gpa);
+	}
+	for(int i=0;i<n;i++){
+		if(a[i].gpa==max){
+			in(a[i]);
+		}
+	}
+}
+int main(){
+	sinhvien a[1000];
+	int n;
+	while(1){
+		printf("------------------qlsv------------------\n");
+		printf("1.nhap tt sinh vien\n");
+		printf("2.hien thi tt sinh vien\n");
+		printf("3.tim kiem sinh vien theo ten\n");
+		printf("4.xoa sinh vien\n");
+		printf("5.sap xep sinh vien theo qpa\n");
+		printf("6.tim sinh vien co gpa cao nhat\n");
+		printf("0.Thoat!\n");
+		printf("-----------------------------------------\n");
+		int luachon;
+		printf("nhap lua chon:\n");
+		scanf("%d",&luachon);
+		if(luachon==1){
+			printf("nhap so sinh vien: ");
+			scanf("%d",&n);
+			for(int i=0;i<n;i++){
+				nhap(&a[i]);
+			}
+		}
+		else if(luachon==2){
+			for(int i=0;i<n;i++){
+				in(a[i]);
+			}
+		}
+		else if(luachon==3){
+			getchar();
+			printf("nhap ten sinh vien can tim: ");
+			char name[1000];
+			gets(name);
+			timkiem(a,n,name);
+		}
+		else if(luachon==4){
+			getchar();
+			printf("nhap ten sinh vien can xoa: ");
+			char xoasv[1000];
+			gets(xoasv);
+			xoa(a,&n,xoasv);
+		}
+		else if(luachon==5){
+			qsort(a,n,sizeof(double),com);
+		}
+		else if(luachon==6){
+			max(a,n);
+		}
+	}
+}
