@@ -1,0 +1,70 @@
+#include<stdio.h>
+int a[10000000];
+int b[10000000];
+int c[10000000];
+void nhap(int a[],int b[],int n,int m){
+	printf("nhap cac phan tu mang a: ");
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	printf("nhap cac phan tu mang b: ");
+	for(int i=0;i<m;i++){
+		scanf("%d",&b[i]);
+	}
+}
+void ghep(int a[],int b[],int c[],int n,int m){
+	int i=0,j=0,dem=0;
+	while(i<n&&j<m){
+		if(a[i]<b[j]){
+			c[dem++]=a[i++];
+		}
+		else{
+			c[dem++]=b[j++];
+		}
+	}
+	while(i<n){
+		c[dem++]=a[i++];
+	}
+	while(j<m){
+		c[dem++]=b[j++];
+	}
+}
+int main(){
+    int n,m;
+	while(1){
+		printf("1.nhap 2 day\n");
+		printf("2.ghep 2 day\n");
+		printf("3.in 3 day\n");
+		printf("4.ket thuc\n");
+		int lc;
+		printf("nhap lua chon: ");
+		scanf("%d",&lc);
+		if(lc==1){
+			printf("nhap so pt mang a:");
+			scanf("%d",&n);
+			printf("nhap so pt mang b:");
+			scanf("%d",&m);
+			nhap(a,b,n,m);
+		}
+		if(lc==2){
+			ghep(a,b,c,n,m);
+		}
+		if(lc==3){
+			for(int i=0;i<n;i++){
+				printf("%d ",a[i]);
+			}
+			printf("\n");
+			for(int i=0;i<m;i++){
+				printf("%d ",b[i]);
+			}
+			printf("\n");
+			for(int i=0;i<n+m;i++){
+				printf("%d ",c[i]);
+			}
+			printf("\n");
+		}
+		if(lc==4){
+			break;
+		}
+	}
+}
