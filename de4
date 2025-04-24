@@ -1,0 +1,252 @@
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+#include<string.h>
+#include<stdlib.h>
+//int ucln(int a,int b){
+//	if(b==0) return a;
+//	else return ucln(b,a%b);
+//}
+//int main(){
+//	int a,b;
+//	scanf("%d%d",&a,&b);
+//	printf("ucln: %d\n",ucln(a,b));
+//	printf("bcnn: %d\n",a/ucln(a,b)*b);
+//}
+struct node {
+	char sbd[100];
+	char hoten[100];
+	double toan,ly,ta,tong;
+	struct node *next;
+};
+struct sv{
+	char sdb[100];
+	char hoten[100];
+	double toan,ly,ta,tong;
+};
+typedef struct node node;
+node *makenode(){
+	node *newnode=(node *)malloc(sizeof(node));
+	printf("nhap sbd:");
+	gets(newnode->sbd);
+	printf("nhap ho ten:");;
+	gets(newnode->hoten);
+	printf("nhap diem toan:");
+	scanf("%lf",&newnode->toan);
+	printf("nhap diem ly:");
+	scanf("%lf",&newnode->ly);
+	printf("nhap diem tieng anh:");
+	scanf("%lf",&newnode->ta);
+	newnode->tong=newnode->toan+newnode->ly+newnode->ta;
+	getchar();
+	newnode->next=NULL;
+	return newnode;
+}
+void themsau(node **head){
+	if(*head==NULL){
+		node *newnode=makenode();
+		(*head)=newnode;
+		return;
+	}
+	node *tam=(*head);
+	while(tam->next!=NULL){
+		tam=tam->next;
+	}
+	node *newnode=makenode();
+	tam->next=newnode;
+}
+int size(node *head){
+	int dem=0;
+	while(head!=NULL){
+		dem++;
+		head=head->next;
+	}
+	return dem;
+}
+void sortt(node **head){
+	for(node *i=(*head);i->next!=NULL;i=i->next){
+		node *vt=i;
+		for(node *j=i->next;j!=NULL;j=j->next){
+			if(j->toan<vt->toan){
+				vt=j;
+			}
+		}
+		int t=i->toan;
+		i->toan=vt->toan;
+		vt->toan=t;
+		int l=i->ly;
+		i->ly=vt->ly;
+		vt->ly=l;
+		int ta=i->ta;
+		i->ta=vt->ta;
+		vt->ta=ta;
+		int to=i->tong;
+		i->tong=vt->tong;
+		vt->tong=to;
+		char bd[100];
+		strcpy(bd,i->sbd);
+		strcpy(i->sbd,vt->sbd);
+		strcpy(vt->sbd,bd);		
+		char ht[100];
+		strcpy(ht,i->hoten);
+		strcpy(i->hoten,vt->hoten);
+		strcpy(vt->hoten,ht);	
+	}
+}
+void sortl(node **head){
+	for(node *i=(*head);i->next!=NULL;i=i->next){
+		node *vt=i;
+		for(node *j=i->next;j!=NULL;j=j->next){
+			if(j->ly<vt->ly){
+				vt=j;
+			}
+		}
+		int t=i->toan;
+		i->toan=vt->toan;
+		vt->toan=t;
+		int l=i->ly;
+		i->ly=vt->ly;
+		vt->ly=l;
+		int ta=i->ta;
+		i->ta=vt->ta;
+		vt->ta=ta;
+		int to=i->tong;
+		i->tong=vt->tong;
+		vt->tong=to;
+		char bd[100];
+		strcpy(bd,i->sbd);
+		strcpy(i->sbd,vt->sbd);
+		strcpy(vt->sbd,bd);		
+		char ht[100];
+		strcpy(ht,i->hoten);
+		strcpy(i->hoten,vt->hoten);
+		strcpy(vt->hoten,ht);	
+	}
+}
+void sortta(node **head){
+	for(node *i=(*head);i->next!=NULL;i=i->next){
+		node *vt=i;
+		for(node *j=i->next;j!=NULL;j=j->next){
+			if(j->ta<vt->ta){
+				vt=j;
+			}
+		}
+		int t=i->toan;
+		i->toan=vt->toan;
+		vt->toan=t;
+		int l=i->ly;
+		i->ly=vt->ly;
+		vt->ly=l;
+		int ta=i->ta;
+		i->ta=vt->ta;
+		vt->ta=ta;
+		int to=i->tong;
+		i->tong=vt->tong;
+		vt->tong=to;
+		char bd[100];
+		strcpy(bd,i->sbd);
+		strcpy(i->sbd,vt->sbd);
+		strcpy(vt->sbd,bd);		
+		char ht[100];
+		strcpy(ht,i->hoten);
+		strcpy(i->hoten,vt->hoten);
+		strcpy(vt->hoten,ht);	
+	}
+}
+void sortto(node **head){
+	for(node *i=(*head);i->next!=NULL;i=i->next){
+		node *vt=i;
+		for(node *j=i->next;j!=NULL;j=j->next){
+			if(j->tong<vt->tong){
+				vt=j;
+			}
+		}
+		int t=i->toan;
+		i->toan=vt->toan;
+		vt->toan=t;
+		int l=i->ly;
+		i->ly=vt->ly;
+		vt->ly=l;
+		int ta=i->ta;
+		i->ta=vt->ta;
+		vt->ta=ta;
+		int to=i->tong;
+		i->tong=vt->tong;
+		vt->tong=to;
+		char bd[100];
+		strcpy(bd,i->sbd);
+		strcpy(i->sbd,vt->sbd);
+		strcpy(vt->sbd,bd);		
+		char ht[100];
+		strcpy(ht,i->hoten);
+		strcpy(i->hoten,vt->hoten);
+		strcpy(vt->hoten,ht);	
+	}
+}
+void in(node *head){
+	int n=size(head);
+	node *tam=(head);
+	printf("\t\t\tDANH SACH DIEM THI THPT\n");
+	printf("%-3s %-10s %-25s %-10s %-10s %-10s %-15s\n","STT","SBD","HO_TEN","DIEM_TOAN","DIEM_LY","DIEM_TIENG_ANH","TONG");
+	for(int i=1;i<=n;i++){
+		printf("%-3d %-10s %-25s %-10.2lf %-10.2lf %-10.2lf     %-15.2lf\n",i,tam->sbd,tam->hoten,tam->toan,tam->ly,tam->ta,tam->tong);
+		tam=tam->next;
+	}
+}
+int main(){
+	node *head=NULL;
+	sv a[1000];
+	while(1){
+		printf("---------MENU--------");
+		printf("1.tao danh sach\n");
+		printf("2.hien thi danh sach\n");
+		printf("3.sap xep diem\n");
+		printf("4.ket thuc\n");
+		printf("---------------------");
+		int lc;
+		printf("nhap lua chon:");
+		scanf("%d",&lc);
+		if(lc==1){
+			int n;
+			printf("nhap so hoc sinh:");
+			scanf("%d",&n);
+			getchar();
+			node *tam=head;
+			for(int i=0;i<n;i++){
+				printf("nhap phan sinh vien %d:\n",i+1);
+			themsau(&head);
+		}
+	}
+		if(lc==2){
+			in(head);
+		}
+		if(lc==3){
+			printf("------------SAP_XEP------------");
+			printf("1.sap xep thep diem toan\n");
+			printf("2.sap xep theo diem ly\n");
+			printf("3.sap xep theo diem tieng anh\n");
+			printf("4.sap xep theo tong diem\n");
+			printf("nhap lua chon:");
+			printf("-------------------------------");
+			int o;
+			scanf("%d",&o);
+			if(o==1){
+				sortt(&head);
+				in(head);
+			}
+			else if(lc==2){
+				sortl(&head);
+			}
+			else if(lc==3){
+				sortta(&head);
+			}
+			else if(lc==4){
+				sortto(&head);
+			}
+			else{
+				printf("nhap sai");
+			}
+		}
+		else if(lc==4) break;
+	}
+}
