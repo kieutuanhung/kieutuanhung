@@ -1,0 +1,128 @@
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+#include<stdlib.h>
+#include<string.h>
+int n,m;
+int a[100][100],b[100][100],c[100][100];
+void tao(){
+	FILE *f;
+	f=fopen("MA_TRAN.C","w");
+	if(f==NULL){
+		printf("khong co tep\n");
+		return;
+	}
+	printf("nhap so dong m: ");
+	scanf("%d",&m);
+	printf("nhap so cot n: ");
+	scanf("%d",&n);
+	fprintf(f,"%d %d",m,n);
+	fprintf(f,"\n");
+	fprintf(f,"ma tran A\n");
+	printf("nhap ma tran A:\n");
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			scanf("%d",&a[i][j]);
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			fprintf(f,"%d ",a[i][j]);
+		}
+		fprintf(f,"\n");
+	}
+	fprintf(f,"ma tran B\n");
+	printf("nhap ma tran B:\n");
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			scanf("%d",&b[i][j]);
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			fprintf(f,"%d ",b[i][j]);
+		}
+		fprintf(f,"\n");
+	}
+	fclose(f);
+	printf("da tao file MA_TRAN.C\n");
+}
+void doc(){
+	FILE *f;
+	f=fopen("MA_TRAN.C","r");
+	if(f==NULL){
+		printf("khong co tep\n");
+		return;
+	}
+	fscanf(f,"%d%d",&m,&n);
+	char doc[100];
+	fscanf(f,"%s %s",doc,doc);
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			fscanf(f,"%d",&a[i][j]);
+		}
+	}
+	fscanf(f,"%s %s",doc,doc);
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			fscanf(f,"%d",&b[i][j]);
+		}
+	}
+	fclose(f);
+	printf("da doc\n");
+}
+void tinh(){
+	FILE *f;
+	f=fopen("MA_TRAN.C","a");
+	if(f==NULL){
+		printf("khong co tep\n");
+		return;
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			c[i][j]=a[i][j]+b[i][j];
+		}
+	}
+	fprintf(f,"Ma tran C\n");
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			fprintf(f,"%d ",c[i][j]);
+		}
+		fprintf(f,"\n");
+	}
+	fclose(f);
+	printf("da ghi\n");
+}
+void xem(){
+	FILE *f;
+	f=fopen("MA_TRAN.C","r");
+	if(f==NULL){
+		printf("khong co file\n");
+		return;
+	}
+	char o;
+	while((o=fgetc(f)!=EOF)){
+		putchar(o);
+	}
+	fclose(f);
+}
+int main(){
+	tao();
+	while(1){
+		printf("1.Doc tep ma tran A,B tu tep\n");
+		printf("2.Tinh ma tran C va ghi bo sung cuoi tep\n");
+		printf("3.Ket thuc\n");
+		int lc;
+		printf("nhap lua chon:");
+		scanf("%d",&lc);
+		if(lc==1){
+			doc();
+		}
+		else if(lc==2){
+			tinh();
+		}
+		else if(lc==3){
+			break;
+		}
+	}
+}
